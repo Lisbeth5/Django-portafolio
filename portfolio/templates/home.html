@@ -1,0 +1,49 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{% static 'portfolio/16_deseos.webp' %}" alt="" class="img1">
+    </div>
+    <div class="col-md-8 my-auto">
+        <h1> I am  <strong>DOLI DOL</strong></h1>
+        <h3> I am a Python FullStack Developer</h3>
+        <p>Ten cuidado con lo que deseas... puede hacerse realidad <br>
+            Ansiosa por hacerse mayor, Abby ha estado planeando su decimosexto
+            cumpleaños desde que era niña y ha mantenido en secreto una lista de deseos que
+            le gustaría que se hiciesen realidad. Cuando el gran día finalmente llega, todo
+            parece salir mal. Pero entonces una misteriosa caja de velas de cumpleaños
+            mágicas llega para cambiar las cosas y los 16 deseos de Abby empiezan a hacerse
+            realidad.</p>
+        <a href="{% static 'portfolio/CV.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
+        </div>
+</header>
+
+<div class="row my-4 text-center">
+
+    <h3>My project</h3>
+    <p>recommendation of movies you could see</p>
+
+    {% for project in projects %}
+
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top">
+            <div class="card-body">
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+
+                {% if project.url %}
+                <a href="{{ project.url }}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{ project.url }}</a>
+                {% endif %} 
+            </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+{% endblock %}
+</div>
